@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base target="_top">
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			font-size: 20px;
+		}
+
+		th,
+		thead {
+			background-color: lightblue;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<table>
+			<thead>
+				<? titles.forEach(title => { ?>
+				<th><?= title ?></th>
+				<? }) ?>
+			</thead>
+			<tbody>
+				<? responses.forEach( response => { ?>
+				<tr>
+					<? response.getItemResponses().forEach( itemResponse => {?>
+          <td><?= itemResponse.getResponse() ?></td>
+					<? }) ?>
+				</tr>
+				<? }) ?>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
