@@ -2,38 +2,48 @@
 <html>
 
 <head>
-	<base target="_top">
 	<style>
-		table,
-		th,
-		td {
-			border: 1px solid black;
-			font-size: 20px;
+		#info {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
 		}
 
-		th,
-		thead {
-			background-color: lightblue;
+		#info td,
+		#info th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#info th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #627388;
+			color: white;
 		}
 	</style>
+	<base target="_parent">
 </head>
 
 <body>
 	<div>
-		<table>
+		<table id="info">
 			<thead>
+				<th>#</th>
 				<? titles.forEach(title => { ?>
 				<th><?= title ?></th>
 				<? }) ?>
 			</thead>
 			<tbody>
-				<? responses.forEach( response => { ?>
+				<? for (const [index, response] of responses.entries()) { ?>
 				<tr>
-					<? response.getItemResponses().forEach( itemResponse => {?>
-          <td><?= itemResponse.getResponse() ?></td>
+					<th><?= index+1 ?></th>
+					<? response.getItemResponses().forEach(itemResponse => {?>
+					<td><?= itemResponse.getResponse() ?></td>
 					<? }) ?>
 				</tr>
-				<? }) ?>
+				<? } ?>
 			</tbody>
 		</table>
 	</div>
