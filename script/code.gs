@@ -3,13 +3,16 @@ function doGet(e) {
   to_do(params["form_url"], params["name"]);
   let return_template = HtmlService.createTemplateFromFile('return');
   let return_html = return_template.evaluate().getContent();
-  return HtmlService.createHtmlOutput(return_html);
+  return HtmlService.createHtmlOutput(
+    "<form action='http://justin900429.github.io/form_to_send_back' method='get' id='foo'></form>" +
+    "<script>document.getElementById('foo').submit();</script>");
 }
 
 
 function to_do(form_url, to_who) {
   let form = FormApp.openByUrl(form_url);
-  let formResponses = form.getResponses();  
+  let formResponses = form.getResponses();
+  let subject = form.getTitle()
 
   let template = HtmlService.createTemplateFromFile('mail_template');
 
@@ -21,6 +24,5 @@ function to_do(form_url, to_who) {
 
   template.responses = formResponses;
   let html = template.evaluate().getContent();
-  MailApp.sendEmail(to_who, "Test", html, {htmlBody: html});
+  MailApp.sendEmail(to_who, subject, html, {htmlBody: html});
 }
-
