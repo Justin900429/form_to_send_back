@@ -1,8 +1,6 @@
 function doGet(e) {
   let params = e.parameter;
   to_do(params["form_url"], params["name"]);
-  let return_template = HtmlService.createTemplateFromFile('return');
-  let return_html = return_template.evaluate().getContent();
   return HtmlService.createHtmlOutput(
     "<form action='http://justin900429.github.io/form_to_send_back/return.html' method='get' id='foo'></form>" +
     "<script>document.getElementById('foo').submit();</script>");
