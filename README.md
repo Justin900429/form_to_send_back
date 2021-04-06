@@ -4,7 +4,7 @@
 Justin, jusin900429@gmail.com
 
 ## LICENSE
-MIT license
+[MIT License](https://github.com/Justin900429/form_to_send_back/blob/main/LICENSE)
 
 ## Problem to slove
 In order to send the Google Form results to others without giving the form permission, I created an application that creators can easily send the form results with email.
